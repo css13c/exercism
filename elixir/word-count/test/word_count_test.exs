@@ -1,6 +1,7 @@
 defmodule WordCountTest do
   use ExUnit.Case
 
+  # @tag :pending
   test "count one word" do
     assert WordCount.count("word") == %{"word" => 1}
   end

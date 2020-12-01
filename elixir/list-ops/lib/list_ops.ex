@@ -68,10 +68,6 @@ defmodule ListOps do
     [a_head | append(a_tail, b)]
   end
 
-  def append([a_head | a_tail], []) do
-    [a_head | append(a_tail, [])]
-  end
-
   def append([], [b_head | b_tail]) do
     [b_head | append([], b_tail)]
   end
@@ -81,20 +77,19 @@ defmodule ListOps do
   end
 
   @spec concat([[any]]) :: [any]
-  def concat([head | tail]) do
-    append(head, concat(tail))
-    # head ++ do_concat(tail)
+  def concat(list) do
+    flatten(list, [])
   end
 
-  def concat([]) do
-    []
+  defp flatten([head | tail], acc) when is_list(head) do
+    flatten(tail, flatten(head, acc))
   end
 
-  defp do_concat([head | tail]) do
-    head ++ do_concat(tail)
+  defp flatten([head | tail], acc) do
+    flatten(tail, [head | acc])
   end
 
-  defp do_concat([]) do
-    []
+  defp flatten([], acc) do
+    reverse(acc)
   end
 end

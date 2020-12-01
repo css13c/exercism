@@ -18,6 +18,9 @@ defmodule PigLatin do
     words =
     for word <- String.split(phrase) do
       Enum.reduce_while()
+      String.graphemes(word) |> Enum.map(fn x ->
+
+      end)
       for letter <- String.graphemes(word) do
         case {is_consonant(letter), is_vowel(letter)} do
           {true, false} ->

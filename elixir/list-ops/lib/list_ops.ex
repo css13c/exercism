@@ -68,10 +68,6 @@ defmodule ListOps do
     [a_head | append(a_tail, b)]
   end
 
-  def append([a_head | a_tail], []) do
-    [a_head | append(a_tail, [])]
-  end
-
   def append([], [b_head | b_tail]) do
     [b_head | append([], b_tail)]
   end
